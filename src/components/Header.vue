@@ -3,18 +3,24 @@
        id="main"
        :style="{...(!isActiveLogo ? {margin: '-40px'} : null)}"
        :class="{fixedNav: isActiveNav}">
-    <img src="../assets/logo.webp"
-         v-if="isActiveLogo"
-         class="logo"
-         alt="winstrim">
-    <b-nav justified
-           :style="{width: '100%'}">
-      <b-nav-item v-for="link in links"
-                  @click="test(link)"
-                  :href="`#${link}`"
-                  :key="link">{{ translateTitlePage(link) }}
-      </b-nav-item>
-    </b-nav>
+<!--    <img src="../assets/logo.webp"-->
+<!--         v-if="isActiveLogo"-->
+<!--         class="logo"-->
+<!--         alt="winstrim">-->
+
+    <b-row :style="{width: '100%'}">
+      <b-col>winstrem</b-col>
+      <b-col>
+        <b-nav justified
+               :style="{width: '100%'}">
+          <b-nav-item v-for="link in links"
+                      @click="test(link)"
+                      :href="`#${link}`"
+                      :key="link">{{ translateTitlePage(link) }}
+          </b-nav-item>
+        </b-nav>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -23,8 +29,8 @@ export default {
   name: "Header",
 
   data: () => ({
-    activePage: 'main',
-    links: ['main', 'clients', 'contacts', 'fromMe'],
+    activePage: 'company',
+    links: ['company', 'services', 'clients', 'advantage', 'contacts'],
     isActiveNav: false,
     isActiveLogo: true,
     scroll: 0,
@@ -43,14 +49,16 @@ export default {
 
     translateTitlePage(page) {
       switch (page) {
-        case 'main':
-          return 'Главная';
+        case 'company':
+          return 'Компания';
+        case 'services':
+          return 'Услуги';
         case 'clients':
           return 'Клиенты';
+        case 'advantage':
+          return 'Преимущество';
         case 'contacts':
           return 'Контакты';
-        case 'fromMe':
-          return 'О нас';
         default:
           return ''
       }
